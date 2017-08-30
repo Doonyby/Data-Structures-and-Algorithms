@@ -1,0 +1,43 @@
+//Binary Search Tree?
+
+//O(1)
+var findNthElement = function(array, n) {
+    //O(1)
+    if (array.length == 1) {
+        //O(1)
+        return array[n];
+    }
+    //O(1)
+    var middle = Math.floor(array.length / 2);
+    //O(1)
+    if (n < middle) {
+        //O(log(n))
+        console.log(array.slice(0, middle));
+        return findNthElement(array.slice(0, middle), n);
+    }
+    else {
+        //O(log(n))
+        console.log(array.slice(middle, array.length));
+        return findNthElement(array.slice(middle, array.length), n - middle);
+    }
+};
+//returns 2
+findNthElement([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 1);
+
+// Find a series of elements from an array
+//0(1)
+var findElements = function(array, toFind) {
+    //0(1)
+    var elements = [];
+    //0(1)
+    for (var i=0; i<toFind.length; i++) {
+        //0(n)
+        var element = findNthElement(array, toFind[i]);
+        //0(n)
+        elements.push(element);
+    }
+    //0(1)
+    return elements;
+};
+//returns [1,2,3]
+findElements([1,2,3,4,5,6,7,8,9,10,11,12], [0,1,2])
